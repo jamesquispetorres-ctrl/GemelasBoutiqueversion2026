@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GESTIONA TU BOUTIQUE | Sistema de Gestión & Retail de Moda</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
@@ -18,7 +21,7 @@
             --bg-pastel-rose: #FCECE9;
             --bg-pastel-vanilla: #F9F3E5;
             --bg-pastel-sage: #EDF3ED;
-            
+
             --brown-dark: #3D261C;
             --brown-primary: #85533D;
             --brown-secondary: #B07D62;
@@ -35,7 +38,7 @@
 
             --border-soft: #EFE4DC;
             --border-focus: #B07D62;
-            
+
             --success: #588157;
             --success-bg: #E8F0E8;
             --danger: #BA3C54;
@@ -70,7 +73,10 @@
             flex-direction: column;
         }
 
-        h1, h2, h3, .font-serif {
+        h1,
+        h2,
+        h3,
+        .font-serif {
             font-family: 'Cormorant Garamond', Georgia, serif;
             font-weight: 600;
             color: var(--text-title);
@@ -132,9 +138,17 @@
         }
 
         @keyframes dressSway {
-            0% { transform: rotate(-5deg) translateY(0); }
-            50% { transform: rotate(5deg) translateY(-4px); }
-            100% { transform: rotate(-5deg) translateY(0); }
+            0% {
+                transform: rotate(-5deg) translateY(0);
+            }
+
+            50% {
+                transform: rotate(5deg) translateY(-4px);
+            }
+
+            100% {
+                transform: rotate(-5deg) translateY(0);
+            }
         }
 
         .dress-sparkles {
@@ -143,12 +157,28 @@
             color: var(--gold-accent);
             animation: sparklePulse 1s infinite alternate;
         }
-        .sp-1 { top: 0px; right: 10px; }
-        .sp-2 { bottom: 15px; left: 5px; animation-delay: 0.5s; }
+
+        .sp-1 {
+            top: 0px;
+            right: 10px;
+        }
+
+        .sp-2 {
+            bottom: 15px;
+            left: 5px;
+            animation-delay: 0.5s;
+        }
 
         @keyframes sparklePulse {
-            0% { transform: scale(0.7) rotate(0deg); opacity: 0.4; }
-            100% { transform: scale(1.2) rotate(15deg); opacity: 1; }
+            0% {
+                transform: scale(0.7) rotate(0deg);
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: scale(1.2) rotate(15deg);
+                opacity: 1;
+            }
         }
 
         .loading-brand-name {
@@ -222,15 +252,23 @@
         }
 
         @keyframes kenBurnsFullScreen {
-            0% { transform: scale(1) translate(0, 0); }
-            50% { transform: scale(1.1) translate(-2%, -1.5%); }
-            100% { transform: scale(1.04) translate(1.5%, 2%); }
+            0% {
+                transform: scale(1) translate(0, 0);
+            }
+
+            50% {
+                transform: scale(1.1) translate(-2%, -1.5%);
+            }
+
+            100% {
+                transform: scale(1.04) translate(1.5%, 2%);
+            }
         }
 
         .login-bg-overlay {
             position: absolute;
             inset: 0;
-            background: 
+            background:
                 radial-gradient(circle at center, rgba(43, 24, 16, 0.35) 0%, rgba(43, 24, 16, 0.7) 100%),
                 linear-gradient(135deg, rgba(250, 246, 240, 0.2) 0%, rgba(133, 83, 61, 0.3) 100%);
             backdrop-filter: blur(3px);
@@ -468,7 +506,8 @@
             font-size: 12px;
         }
 
-        .separator::before, .separator::after {
+        .separator::before,
+        .separator::after {
             content: '';
             flex: 1;
             border-bottom: 1px solid var(--border-soft);
@@ -696,12 +735,15 @@
 
         /* CONTENIDO PRINCIPAL */
         main.main-viewport {
-            margin-left: 0;
-            width: 100%;
+            /* FIX: aside.app-sidebar es position:fixed (sale del flujo), así que
+               sin este margin-left el sidebar de 275px queda flotando ENCIMA
+               del contenido en vez de empujarlo. Antes había "margin:0 auto"
+               después de "margin-left:0", que anulaba cualquier offset. */
+            margin-left: 275px;
+            width: calc(100% - 275px);
             flex: 1;
             padding: 32px 24px;
             max-width: 1400px;
-            margin: 0 auto;
             box-sizing: border-box;
         }
 
@@ -788,9 +830,17 @@
             background: var(--brown-secondary);
         }
 
-        .metric-card.rose::after { background: var(--rose-pastel); }
-        .metric-card.vanilla::after { background: var(--caramel); }
-        .metric-card.gold::after { background: var(--gold-accent); }
+        .metric-card.rose::after {
+            background: var(--rose-pastel);
+        }
+
+        .metric-card.vanilla::after {
+            background: var(--caramel);
+        }
+
+        .metric-card.gold::after {
+            background: var(--gold-accent);
+        }
 
         .metric-top {
             display: flex;
@@ -1339,7 +1389,8 @@
             margin-bottom: 6px;
         }
 
-        .form-select, .form-input-pastel {
+        .form-select,
+        .form-input-pastel {
             width: 100%;
             padding: 11px 14px;
             background: var(--bg-subtle);
@@ -1351,7 +1402,8 @@
             transition: var(--transition);
         }
 
-        .form-select:focus, .form-input-pastel:focus {
+        .form-select:focus,
+        .form-input-pastel:focus {
             background: #FFFFFF;
             border-color: var(--brown-secondary);
             box-shadow: 0 0 0 3px rgba(176, 125, 98, 0.15);
@@ -1413,13 +1465,28 @@
             animation: slideIn 0.3s forwards;
         }
 
-        .toast-pastel.success { border-left-color: var(--success); }
-        .toast-pastel.info { border-left-color: var(--caramel); }
-        .toast-pastel.danger { border-left-color: var(--danger); }
+        .toast-pastel.success {
+            border-left-color: var(--success);
+        }
+
+        .toast-pastel.info {
+            border-left-color: var(--caramel);
+        }
+
+        .toast-pastel.danger {
+            border-left-color: var(--danger);
+        }
 
         @keyframes slideIn {
-            from { transform: translateX(80px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+            from {
+                transform: translateX(80px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
         /* Vistas / Tabs */
@@ -1433,8 +1500,15 @@
         }
 
         @keyframes viewFade {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ==========================================================================
@@ -1638,6 +1712,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- ==========================================================================
@@ -1651,20 +1726,22 @@
                 <!-- SVG Vestido animado ondeando -->
                 <svg class="animated-dress" viewBox="0 0 100 120" width="86" height="104">
                     <!-- Percha Dorada -->
-                    <path d="M 50 14 C 50 7, 56 7, 56 12 C 56 18, 50 20, 50 24 L 28 35 L 72 35 Z" fill="none" stroke="#C5A059" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="50" cy="24" r="2.5" fill="#C5A059"/>
+                    <path d="M 50 14 C 50 7, 56 7, 56 12 C 56 18, 50 20, 50 24 L 28 35 L 72 35 Z" fill="none"
+                        stroke="#C5A059" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="50" cy="24" r="2.5" fill="#C5A059" />
                     <!-- Corpiño / Escote del vestido -->
-                    <path d="M 36 35 Q 50 42 64 35 L 61 58 Q 50 62 39 58 Z" fill="#F4ACB7"/>
+                    <path d="M 36 35 Q 50 42 64 35 L 61 58 Q 50 62 39 58 Z" fill="#F4ACB7" />
                     <!-- Falda en movimiento con degradado pastel -->
-                    <path d="M 39 58 Q 50 62 61 58 L 78 112 Q 50 118 22 112 Z" fill="url(#pastelDressGrad)" stroke="#B07D62" stroke-width="1"/>
+                    <path d="M 39 58 Q 50 62 61 58 L 78 112 Q 50 118 22 112 Z" fill="url(#pastelDressGrad)"
+                        stroke="#B07D62" stroke-width="1" />
                     <!-- Cinturón caramelo -->
-                    <rect x="38" y="55" width="24" height="4" rx="2" fill="#85533D"/>
+                    <rect x="38" y="55" width="24" height="4" rx="2" fill="#85533D" />
                     <defs>
                         <linearGradient id="pastelDressGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#FCECE9"/>
-                            <stop offset="40%" stop-color="#F4ACB7"/>
-                            <stop offset="85%" stop-color="#DEB89A"/>
-                            <stop offset="100%" stop-color="#B07D62"/>
+                            <stop offset="0%" stop-color="#FCECE9" />
+                            <stop offset="40%" stop-color="#F4ACB7" />
+                            <stop offset="85%" stop-color="#DEB89A" />
+                            <stop offset="100%" stop-color="#B07D62" />
                         </linearGradient>
                     </defs>
                 </svg>
@@ -1672,7 +1749,7 @@
 
             <div class="loading-brand-name">GESTIONA TU BOUTIQUE</div>
             <div class="loading-subtitle" id="loader-status-text">Iniciando en modo demo...</div>
-            
+
             <div class="loading-progress-bar">
                 <div class="loading-progress-fill" id="loader-progress-fill"></div>
             </div>
@@ -1696,7 +1773,8 @@
                     <div class="brand-badge"><i class="fa-solid fa-gem"></i> GESTIONA TU BOUTIQUE</div>
                     <h1 class="hero-title">Sistema de Gestión & Retail de Moda</h1>
                     <p class="hero-desc">
-                        Control integral de inventario, catálogo de prendas exclusivas, cartera de clientas VIP, asesoras de imagen y punto de venta express.
+                        Control integral de inventario, catálogo de prendas exclusivas, cartera de clientas VIP,
+                        asesoras de imagen y punto de venta express.
                     </p>
                 </div>
 
@@ -1742,7 +1820,9 @@
                         <label>Correo Electrónico</label>
                         <div class="input-wrapper">
                             <i class="fa-solid fa-envelope"></i>
-                            <input type="email" id="login-email" class="input-field" placeholder="ejemplo@gestionatuboutique.com" value="admin@gestionatuboutique.com" required>
+                            <input type="email" id="login-email" class="input-field"
+                                placeholder="ejemplo@gestionatuboutique.com" value="admin@gestionatuboutique.com"
+                                required>
                         </div>
                     </div>
 
@@ -1766,7 +1846,7 @@
                 </button>
 
                 <div class="register-link-box">
-                    ¿Aún no tienes una cuenta de boutique? 
+                    ¿Aún no tienes una cuenta de boutique?
                     <span class="register-link-btn" onclick="abrirModalRegistro()">Registrarse aquí</span>
                 </div>
             </div>
@@ -1779,13 +1859,15 @@
     <div id="app-container">
         <!-- BARRA SUPERIOR MÓVIL (Smartphones & Tablets <= 992px) -->
         <div class="mobile-top-bar">
-            <button class="hamburger-btn" id="hamburger-toggle-btn" onclick="toggleMobileSidebar()" aria-label="Abrir menú de navegación">
+            <button class="hamburger-btn" id="hamburger-toggle-btn" onclick="toggleMobileSidebar()"
+                aria-label="Abrir menú de navegación">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <div class="mobile-brand-title">
-                <i class="fa-solid fa-gem" style="color: var(--gold-accent);"></i> GESTIONA TU BOUTIQUE
+                <i class="fa-solid fa-gem" style="color: var(--gold-accent);"></i> <span
+                    class="mobile-brand-text">GESTIONA TU BOUTIQUE</span>
             </div>
             <button class="mobile-cart-badge-btn" onclick="cambiarVista('pos')">
                 <i class="fa-solid fa-cash-register"></i>
@@ -1838,7 +1920,8 @@
                 <a class="nav-btn" onclick="cambiarVista('planes')">
                     <i class="fa-solid fa-gem"></i>
                     <span>Elegir Planes</span>
-                    <span class="nav-badge" style="background: var(--bg-pastel-vanilla); color: var(--caramel);">VIP</span>
+                    <span class="nav-badge"
+                        style="background: var(--bg-pastel-vanilla); color: var(--caramel);">VIP</span>
                 </a>
             </nav>
 
@@ -1872,9 +1955,11 @@
                         <i class="fa-solid fa-crown"></i> Modo: Administradora
                     </span>
                     <span class="pill-tag pill-active-plan" onclick="cambiarVista('planes')">
-                        <i class="fa-solid fa-star"></i> Plan Actual: <strong id="active-plan-name" style="margin-left:4px;">Boutique Pro</strong>
+                        <i class="fa-solid fa-star"></i> Plan Actual: <strong id="active-plan-name"
+                            style="margin-left:4px;">Boutique Pro</strong>
                     </span>
-                    <button class="btn-action btn-action-soft" onclick="cerrarSesionDemo()" title="Cerrar Sesión / Volver al Login">
+                    <button class="btn-action btn-action-soft" onclick="cerrarSesionDemo()"
+                        title="Cerrar Sesión / Volver al Login">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i> Salir
                     </button>
                 </div>
@@ -1923,7 +2008,7 @@
                  VISTA 1: DASHBOARD
                  ============================================================== -->
             <section id="view-dashboard" class="view-section active">
-                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+                <div class="dashboard-grid">
                     <!-- Tabla de Últimas Ventas -->
                     <div class="content-panel">
                         <div class="panel-headline">
@@ -1945,7 +2030,11 @@
                                     </tr>
                                 </thead>
                                 <tbody id="table-dashboard-ventas">
-                                    <tr><td colspan="5" style="text-align:center; padding: 24px; color: var(--text-muted);">Cargando ventas...</td></tr>
+                                    <tr>
+                                        <td colspan="5"
+                                            style="text-align:center; padding: 24px; color: var(--text-muted);">Cargando
+                                            ventas...</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1961,31 +2050,44 @@
                         </div>
 
                         <div style="display: flex; flex-direction: column; gap: 14px;">
-                            <div style="background: var(--bg-pastel-rose); padding: 14px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between;">
+                            <div
+                                style="background: var(--bg-pastel-rose); padding: 14px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between;">
                                 <div>
                                     <h4 style="font-size: 14px; color: var(--text-title);">Vestido Lino Champagne</h4>
-                                    <span style="font-size: 12px; color: var(--text-muted);">Colección Alta Costura</span>
+                                    <span style="font-size: 12px; color: var(--text-muted);">Colección Alta
+                                        Costura</span>
                                 </div>
-                                <strong style="font-family:'Cormorant Garamond',serif; font-size: 20px; color: var(--brown-primary);">S/ 249.90</strong>
+                                <strong
+                                    style="font-family:'Cormorant Garamond',serif; font-size: 20px; color: var(--brown-primary);">S/
+                                    249.90</strong>
                             </div>
 
-                            <div style="background: var(--bg-pastel-vanilla); padding: 14px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between;">
+                            <div
+                                style="background: var(--bg-pastel-vanilla); padding: 14px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between;">
                                 <div>
                                     <h4 style="font-size: 14px; color: var(--text-title);">Blazer Velvet Terracota</h4>
                                     <span style="font-size: 12px; color: var(--text-muted);">Colección Otoño Chic</span>
                                 </div>
-                                <strong style="font-family:'Cormorant Garamond',serif; font-size: 20px; color: var(--brown-primary);">S/ 320.00</strong>
+                                <strong
+                                    style="font-family:'Cormorant Garamond',serif; font-size: 20px; color: var(--brown-primary);">S/
+                                    320.00</strong>
                             </div>
 
-                            <div style="background: var(--bg-subtle); padding: 14px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between;">
+                            <div
+                                style="background: var(--bg-subtle); padding: 14px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between;">
                                 <div>
                                     <h4 style="font-size: 14px; color: var(--text-title);">Conjunto Rose Pastel</h4>
-                                    <span style="font-size: 12px; color: var(--text-muted);">Edición Limitada Two-Piece</span>
+                                    <span style="font-size: 12px; color: var(--text-muted);">Edición Limitada
+                                        Two-Piece</span>
                                 </div>
-                                <strong style="font-family:'Cormorant Garamond',serif; font-size: 20px; color: var(--brown-primary);">S/ 185.00</strong>
+                                <strong
+                                    style="font-family:'Cormorant Garamond',serif; font-size: 20px; color: var(--brown-primary);">S/
+                                    185.00</strong>
                             </div>
 
-                            <button class="btn-action btn-action-primary" style="margin-top: 10px; width: 100%; justify-content: center;" onclick="abrirModalNuevoProducto()">
+                            <button class="btn-action btn-action-primary"
+                                style="margin-top: 10px; width: 100%; justify-content: center;"
+                                onclick="abrirModalNuevoProducto()">
                                 <i class="fa-solid fa-plus"></i> Agregar Prenda al Catálogo
                             </button>
                         </div>
@@ -1997,7 +2099,7 @@
                  VISTA 2: CATÁLOGO & PUNTO DE VENTA (POS)
                  ============================================================== -->
             <section id="view-pos" class="view-section">
-                <div style="display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 24px;">
+                <div class="pos-layout">
                     <!-- Catálogo de Prendas -->
                     <div class="content-panel">
                         <div class="panel-headline">
@@ -2023,7 +2125,9 @@
                                 <h3>Ticket de Compra</h3>
                                 <p>Detalle de la orden actual</p>
                             </div>
-                            <button class="btn-action-soft" style="padding: 4px 10px; font-size: 11px; border-radius: 8px;" onclick="limpiarCarrito()">
+                            <button class="btn-action-soft"
+                                style="padding: 4px 10px; font-size: 11px; border-radius: 8px;"
+                                onclick="limpiarCarrito()">
                                 Vaciar
                             </button>
                         </div>
@@ -2043,7 +2147,8 @@
                         </div>
 
                         <!-- Lista del Carrito -->
-                        <div id="pos-cart-items" style="max-height: 220px; overflow-y: auto; margin-bottom: 16px; border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 10px; background: var(--bg-subtle);">
+                        <div id="pos-cart-items"
+                            style="max-height: 220px; overflow-y: auto; margin-bottom: 16px; border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 10px; background: var(--bg-subtle);">
                             <div style="text-align: center; color: var(--text-light); font-size: 13px; padding: 20px;">
                                 No hay prendas agregadas al carrito.<br>Haz clic en el catálogo para sumar prendas.
                             </div>
@@ -2051,17 +2156,21 @@
 
                         <!-- Totales -->
                         <div style="border-top: 1px dashed var(--border-soft); padding-top: 14px; margin-bottom: 20px;">
-                            <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">
+                            <div
+                                style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">
                                 <span>Subtotal</span>
                                 <span id="pos-subtotal">S/ 0.00</span>
                             </div>
-                            <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">
+                            <div
+                                style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">
                                 <span>IGV (18%)</span>
                                 <span id="pos-igv">S/ 0.00</span>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: baseline;">
                                 <strong style="font-size: 16px; color: var(--text-title);">Total Final</strong>
-                                <strong style="font-family:'Cormorant Garamond',serif; font-size: 32px; color: var(--brown-primary);" id="pos-total-display">S/ 0.00</strong>
+                                <strong
+                                    style="font-family:'Cormorant Garamond',serif; font-size: 32px; color: var(--brown-primary);"
+                                    id="pos-total-display">S/ 0.00</strong>
                             </div>
                         </div>
 
@@ -2087,7 +2196,7 @@
                         </button>
                     </div>
 
-                    <div class="table-wrap">
+                    <div class="table-wrapper">
                         <table class="boutique-table">
                             <thead>
                                 <tr>
@@ -2120,7 +2229,8 @@
                         <div class="panel-controls">
                             <div class="search-field-box">
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                                <input type="text" id="search-clientes" class="search-input-pastel" placeholder="Buscar por nombre o DNI..." oninput="filtrarClientes()">
+                                <input type="text" id="search-clientes" class="search-input-pastel"
+                                    placeholder="Buscar por nombre o DNI..." oninput="filtrarClientes()">
                             </div>
                             <button class="btn-action btn-action-primary" onclick="abrirModalCliente()">
                                 <i class="fa-solid fa-plus"></i> Registrar Clienta
@@ -2128,7 +2238,7 @@
                         </div>
                     </div>
 
-                    <div class="table-wrap">
+                    <div class="table-wrapper">
                         <table class="boutique-table">
                             <thead>
                                 <tr>
@@ -2161,7 +2271,8 @@
                         <div class="panel-controls">
                             <div class="search-field-box">
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                                <input type="text" id="search-empleados" class="search-input-pastel" placeholder="Buscar colaboradora..." oninput="filtrarEmpleados()">
+                                <input type="text" id="search-empleados" class="search-input-pastel"
+                                    placeholder="Buscar colaboradora..." oninput="filtrarEmpleados()">
                             </div>
                             <button class="btn-action btn-action-primary" onclick="abrirModalEmpleado()">
                                 <i class="fa-solid fa-plus"></i> Nueva Colaboradora
@@ -2169,7 +2280,7 @@
                         </div>
                     </div>
 
-                    <div class="table-wrap">
+                    <div class="table-wrapper">
                         <table class="boutique-table">
                             <thead>
                                 <tr>
@@ -2204,7 +2315,7 @@
                         </button>
                     </div>
 
-                    <div class="table-wrap">
+                    <div class="table-wrapper">
                         <table class="boutique-table">
                             <thead>
                                 <tr>
@@ -2231,10 +2342,12 @@
                 <div class="plans-header-area">
                     <span class="brand-badge"><i class="fa-solid fa-gem"></i> Membresías Boutique</span>
                     <h2>Elige el Plan Perfecto para tu Atelier</h2>
-                    <p>Escala tu boutique con tecnología exclusiva, control de inventario multitienda y fidelización de clientas de alta gama.</p>
+                    <p>Escala tu boutique con tecnología exclusiva, control de inventario multitienda y fidelización de
+                        clientas de alta gama.</p>
 
                     <div class="billing-toggle-box">
-                        <button class="toggle-btn active" id="toggle-mensual" onclick="setBillingCycle('mensual')">Facturación Mensual</button>
+                        <button class="toggle-btn active" id="toggle-mensual"
+                            onclick="setBillingCycle('mensual')">Facturación Mensual</button>
                         <button class="toggle-btn" id="toggle-anual" onclick="setBillingCycle('anual')">
                             Anual <span class="save-badge">Ahorra 25%</span>
                         </button>
@@ -2245,7 +2358,8 @@
                     <!-- PLAN 1: ESENCIAL -->
                     <div class="plan-card" id="card-plan-esencial">
                         <h3 class="plan-name">Atelier Esencial</h3>
-                        <p class="plan-desc">Ideal para diseñadores independientes o boutiques con un único punto de venta.</p>
+                        <p class="plan-desc">Ideal para diseñadores independientes o boutiques con un único punto de
+                            venta.</p>
                         <div class="plan-price-box">
                             <span class="plan-currency">S/</span>
                             <span class="plan-amount" id="price-esencial">129</span>
@@ -2257,7 +2371,8 @@
                             <li><i class="fa-solid fa-circle-check"></i> Facturación y tickets express</li>
                             <li><i class="fa-solid fa-circle-check"></i> Reportes mensuales de ventas</li>
                         </ul>
-                        <button class="btn-action btn-action-soft" style="justify-content: center; width: 100%;" onclick="seleccionarPlan('Atelier Esencial', 129)">
+                        <button class="btn-action btn-action-soft" style="justify-content: center; width: 100%;"
+                            onclick="seleccionarPlan('Atelier Esencial', 129)">
                             Elegir Plan Esencial
                         </button>
                     </div>
@@ -2266,7 +2381,8 @@
                     <div class="plan-card featured" id="card-plan-pro">
                         <div class="plan-badge-top">⭐ Más Popular</div>
                         <h3 class="plan-name">Boutique Pro</h3>
-                        <p class="plan-desc">La solución completa para boutiques consagradas con alto flujo de ventas y catálogo exclusivo.</p>
+                        <p class="plan-desc">La solución completa para boutiques consagradas con alto flujo de ventas y
+                            catálogo exclusivo.</p>
                         <div class="plan-price-box">
                             <span class="plan-currency">S/</span>
                             <span class="plan-amount" id="price-pro">289</span>
@@ -2279,7 +2395,8 @@
                             <li><i class="fa-solid fa-circle-check"></i> Programa de puntos & fidelidad VIP</li>
                             <li><i class="fa-solid fa-circle-check"></i> Métricas ejecutivas en tiempo real</li>
                         </ul>
-                        <button class="btn-action btn-action-primary" style="justify-content: center; width: 100%;" onclick="seleccionarPlan('Boutique Pro', 289)">
+                        <button class="btn-action btn-action-primary" style="justify-content: center; width: 100%;"
+                            onclick="seleccionarPlan('Boutique Pro', 289)">
                             Plan Seleccionado Actual
                         </button>
                     </div>
@@ -2287,7 +2404,8 @@
                     <!-- PLAN 3: FRANQUICIA IMPERIAL -->
                     <div class="plan-card" id="card-plan-imperial">
                         <h3 class="plan-name">Franquicia Imperial</h3>
-                        <p class="plan-desc">Para marcas de moda multitienda, casas de alta costura y franquicias nacionales.</p>
+                        <p class="plan-desc">Para marcas de moda multitienda, casas de alta costura y franquicias
+                            nacionales.</p>
                         <div class="plan-price-box">
                             <span class="plan-currency">S/</span>
                             <span class="plan-amount" id="price-imperial">549</span>
@@ -2300,7 +2418,8 @@
                             <li><i class="fa-solid fa-circle-check"></i> Asesor de negocios dedicado 24/7</li>
                             <li><i class="fa-solid fa-circle-check"></i> App móvil VIP personalizada</li>
                         </ul>
-                        <button class="btn-action btn-action-soft" style="justify-content: center; width: 100%;" onclick="seleccionarPlan('Franquicia Imperial', 549)">
+                        <button class="btn-action btn-action-soft" style="justify-content: center; width: 100%;"
+                            onclick="seleccionarPlan('Franquicia Imperial', 549)">
                             Elegir Plan Imperial
                         </button>
                     </div>
@@ -2323,7 +2442,8 @@
             <form id="form-nuevo-producto" onsubmit="guardarNuevoProducto(event)">
                 <div class="modal-form-group">
                     <label>Nombre de la Prenda</label>
-                    <input type="text" class="form-input-pastel" id="prod-nombre" placeholder="Ej: Vestido Sirena Terciopelo" required>
+                    <input type="text" class="form-input-pastel" id="prod-nombre"
+                        placeholder="Ej: Vestido Sirena Terciopelo" required>
                 </div>
                 <div class="modal-form-group">
                     <label>Colección / Categoría</label>
@@ -2338,16 +2458,19 @@
                 </div>
                 <div class="modal-form-group">
                     <label>Tallas & Detalles</label>
-                    <input type="text" class="form-input-pastel" id="prod-desc" placeholder="Ej: Tallas S, M, L · Seda Francesa" required>
+                    <input type="text" class="form-input-pastel" id="prod-desc"
+                        placeholder="Ej: Tallas S, M, L · Seda Francesa" required>
                 </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                <div class="form-row-2col" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
                     <div class="modal-form-group">
                         <label>Precio de Venta (S/.)</label>
-                        <input type="number" step="0.01" min="1" class="form-input-pastel" id="prod-precio" placeholder="Ej: 289.90" required>
+                        <input type="number" step="0.01" min="1" class="form-input-pastel" id="prod-precio"
+                            placeholder="Ej: 289.90" required>
                     </div>
                     <div class="modal-form-group">
                         <label>Stock Disponible</label>
-                        <input type="number" min="1" class="form-input-pastel" id="prod-stock" placeholder="Ej: 12" value="10" required>
+                        <input type="number" min="1" class="form-input-pastel" id="prod-stock" placeholder="Ej: 12"
+                            value="10" required>
                     </div>
                 </div>
                 <div class="modal-actions-row">
@@ -2363,27 +2486,34 @@
     <!-- MODAL: SUGERENCIA DE USAR MODO DEMO CUANDO INTENTA LOGIN MANUAL -->
     <div class="modal-bg" id="modal-sugerencia-demo">
         <div class="modal-box" style="text-align: center;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--bg-pastel-vanilla); color: var(--gold-accent); display: flex; align-items: center; justify-content: center; font-size: 26px; margin: 0 auto 16px;">
+            <div
+                style="width: 60px; height: 60px; border-radius: 50%; background: var(--bg-pastel-vanilla); color: var(--gold-accent); display: flex; align-items: center; justify-content: center; font-size: 26px; margin: 0 auto 16px;">
                 <i class="fa-solid fa-sparkles"></i>
             </div>
             <h3 style="font-size: 28px; margin-bottom: 8px;">Entorno de Demostración</h3>
             <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5; margin-bottom: 22px;">
-                Para explorar todas las funcionalidades comerciales de <strong>GESTIONA TU BOUTIQUE</strong> de forma inmediata, te invitamos a <strong>utilizar el Modo DEMO</strong> interactivo.
+                Para explorar todas las funcionalidades comerciales de <strong>GESTIONA TU BOUTIQUE</strong> de forma
+                inmediata, te invitamos a <strong>utilizar el Modo DEMO</strong> interactivo.
             </p>
 
             <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
-                <button class="btn-action btn-action-primary" style="justify-content: center; padding: 12px;" onclick="ejecutarAccesoConCarga('admin')">
+                <button class="btn-action btn-action-primary" style="justify-content: center; padding: 12px;"
+                    onclick="ejecutarAccesoConCarga('admin')">
                     <i class="fa-solid fa-crown"></i> Entrar como Administradora
                 </button>
-                <button class="btn-action btn-action-soft" style="justify-content: center; padding: 12px;" onclick="ejecutarAccesoConCarga('supervisora')">
+                <button class="btn-action btn-action-soft" style="justify-content: center; padding: 12px;"
+                    onclick="ejecutarAccesoConCarga('supervisora')">
                     <i class="fa-solid fa-user-tie"></i> Entrar como Supervisora
                 </button>
-                <button class="btn-action btn-action-soft" style="justify-content: center; padding: 12px;" onclick="ejecutarAccesoConCarga('vendedora')">
+                <button class="btn-action btn-action-soft" style="justify-content: center; padding: 12px;"
+                    onclick="ejecutarAccesoConCarga('vendedora')">
                     <i class="fa-solid fa-bag-shopping"></i> Entrar como Asesora de Moda / POS
                 </button>
             </div>
 
-            <button class="btn-action-soft" style="background:none; border:none; color:var(--text-light); font-size:12.5px; cursor:pointer;" onclick="cerrarModales()">
+            <button class="btn-action-soft"
+                style="background:none; border:none; color:var(--text-light); font-size:12.5px; cursor:pointer;"
+                onclick="cerrarModales()">
                 Cerrar sugerencia
             </button>
         </div>
@@ -2438,7 +2568,8 @@
             </p>
 
             <div style="display: flex; flex-direction: column; gap: 12px;">
-                <div class="role-chip" style="padding: 14px; flex-direction: row; text-align: left;" onclick="ejecutarAccesoConCarga('admin')">
+                <div class="role-chip" style="padding: 14px; flex-direction: row; text-align: left;"
+                    onclick="ejecutarAccesoConCarga('admin')">
                     <i class="fa-solid fa-crown" style="font-size: 22px; color: var(--caramel); margin-right: 8px;"></i>
                     <div class="role-chip-text" style="flex:1;">
                         <h4 style="font-size: 15px;">👑 Administradora</h4>
@@ -2446,16 +2577,21 @@
                     </div>
                 </div>
 
-                <div class="role-chip" style="padding: 14px; flex-direction: row; text-align: left;" onclick="ejecutarAccesoConCarga('supervisora')">
-                    <i class="fa-solid fa-user-tie" style="font-size: 22px; color: var(--brown-secondary); margin-right: 8px;"></i>
+                <div class="role-chip" style="padding: 14px; flex-direction: row; text-align: left;"
+                    onclick="ejecutarAccesoConCarga('supervisora')">
+                    <i class="fa-solid fa-user-tie"
+                        style="font-size: 22px; color: var(--brown-secondary); margin-right: 8px;"></i>
                     <div class="role-chip-text" style="flex:1;">
                         <h4 style="font-size: 15px;">👩‍💼 Supervisora de Tienda</h4>
-                        <span>Monitoreo de ventas diarias, clientes VIP y asesoras. Sin acceso a cuentas de usuario.</span>
+                        <span>Monitoreo de ventas diarias, clientes VIP y asesoras. Sin acceso a cuentas de
+                            usuario.</span>
                     </div>
                 </div>
 
-                <div class="role-chip" style="padding: 14px; flex-direction: row; text-align: left;" onclick="ejecutarAccesoConCarga('vendedora')">
-                    <i class="fa-solid fa-bag-shopping" style="font-size: 22px; color: var(--rose-dark); margin-right: 8px;"></i>
+                <div class="role-chip" style="padding: 14px; flex-direction: row; text-align: left;"
+                    onclick="ejecutarAccesoConCarga('vendedora')">
+                    <i class="fa-solid fa-bag-shopping"
+                        style="font-size: 22px; color: var(--rose-dark); margin-right: 8px;"></i>
                     <div class="role-chip-text" style="flex:1;">
                         <h4 style="font-size: 15px;">🛍️ Asesora de Moda / Cajera</h4>
                         <span>Enfocada en el Punto de Venta Express (POS), emisión de tickets y clientes.</span>
@@ -2483,15 +2619,18 @@
                 </div>
                 <div class="modal-form-group">
                     <label>Nombres Completos</label>
-                    <input type="text" class="form-input-pastel" id="cliente-nombres" placeholder="Ej: Marcela Morales Rivera" minlength="3" maxlength="100" required>
+                    <input type="text" class="form-input-pastel" id="cliente-nombres"
+                        placeholder="Ej: Marcela Morales Rivera" minlength="3" maxlength="100" required>
                 </div>
                 <div class="modal-form-group">
                     <label>Documento de Identidad (DNI / RUC)</label>
-                    <input type="text" class="form-input-pastel" id="cliente-documento" placeholder="Ej: 74839201" maxlength="15" required>
+                    <input type="text" class="form-input-pastel" id="cliente-documento" placeholder="Ej: 74839201"
+                        maxlength="15" required>
                 </div>
                 <div class="modal-form-group">
                     <label>Teléfono Móvil (9 dígitos)</label>
-                    <input type="text" class="form-input-pastel" id="cliente-telefono" placeholder="Ej: 987123456" pattern="\d{9}" required>
+                    <input type="text" class="form-input-pastel" id="cliente-telefono" placeholder="Ej: 987123456"
+                        pattern="\d{9}" required>
                 </div>
                 <div class="modal-actions-row">
                     <button type="button" class="btn-action btn-action-soft" onclick="cerrarModales()">Cancelar</button>
@@ -2511,19 +2650,23 @@
             <form id="form-empleado" onsubmit="guardarEmpleado(event)">
                 <div class="modal-form-group">
                     <label>Nombres</label>
-                    <input type="text" class="form-input-pastel" id="emp-nombres" placeholder="Ej: Sofia" minlength="3" maxlength="50" required>
+                    <input type="text" class="form-input-pastel" id="emp-nombres" placeholder="Ej: Sofia" minlength="3"
+                        maxlength="50" required>
                 </div>
                 <div class="modal-form-group">
                     <label>Apellidos</label>
-                    <input type="text" class="form-input-pastel" id="emp-apellidos" placeholder="Ej: Pineda Rios" minlength="3" maxlength="50" required>
+                    <input type="text" class="form-input-pastel" id="emp-apellidos" placeholder="Ej: Pineda Rios"
+                        minlength="3" maxlength="50" required>
                 </div>
                 <div class="modal-form-group">
                     <label>DNI (8 dígitos)</label>
-                    <input type="text" class="form-input-pastel" id="emp-dni" placeholder="Ej: 71829304" pattern="\d{8}" required>
+                    <input type="text" class="form-input-pastel" id="emp-dni" placeholder="Ej: 71829304" pattern="\d{8}"
+                        required>
                 </div>
                 <div class="modal-form-group">
                     <label>Correo Electrónico</label>
-                    <input type="email" class="form-input-pastel" id="emp-correo" placeholder="sofia@gestionatuboutique.com" required>
+                    <input type="email" class="form-input-pastel" id="emp-correo"
+                        placeholder="sofia@gestionatuboutique.com" required>
                 </div>
                 <div class="modal-actions-row">
                     <button type="button" class="btn-action btn-action-soft" onclick="cerrarModales()">Cancelar</button>
@@ -2553,7 +2696,8 @@
                 </div>
                 <div class="modal-form-group">
                     <label>Apellidos</label>
-                    <input type="text" class="form-input-pastel" id="usu-apellidos" minlength="3" maxlength="50" required>
+                    <input type="text" class="form-input-pastel" id="usu-apellidos" minlength="3" maxlength="50"
+                        required>
                 </div>
                 <div class="modal-form-group">
                     <label>DNI</label>
@@ -2575,15 +2719,18 @@
     <div class="modal-bg" id="modal-ticket">
         <div class="modal-box" style="max-width: 440px;">
             <div class="modal-header-line">
-                <span class="brand-badge"><i class="fa-solid fa-circle-check" style="color: var(--success);"></i> Venta Exitosa</span>
+                <span class="brand-badge"><i class="fa-solid fa-circle-check" style="color: var(--success);"></i> Venta
+                    Exitosa</span>
                 <button class="btn-modal-close" onclick="cerrarModales()">&times;</button>
             </div>
 
             <div class="ticket-receipt" id="ticket-printable-content">
                 <div class="ticket-brand">GESTIONA TU BOUTIQUE</div>
-                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Sistema Integral de Alta Costura</div>
-                <div style="font-size: 11px; color: var(--text-light); margin-top: 4px;">RUC: 20608945123 · Lima, Perú</div>
-                
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Sistema Integral de Alta
+                    Costura</div>
+                <div style="font-size: 11px; color: var(--text-light); margin-top: 4px;">RUC: 20608945123 · Lima, Perú
+                </div>
+
                 <div class="ticket-divider"></div>
 
                 <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
@@ -2605,7 +2752,8 @@
 
                 <div class="ticket-divider"></div>
 
-                <div id="ticket-items-list" style="font-size: 12.5px; text-align: left; display: flex; flex-direction: column; gap: 6px;">
+                <div id="ticket-items-list"
+                    style="font-size: 12.5px; text-align: left; display: flex; flex-direction: column; gap: 6px;">
                     <!-- Items -->
                 </div>
 
@@ -2613,9 +2761,12 @@
 
                 <div style="display: flex; justify-content: space-between; align-items: baseline;">
                     <span style="font-size: 14px; font-weight: 700; color: var(--text-title);">TOTAL CANCELADO:</span>
-                    <strong style="font-family:'Cormorant Garamond',serif; font-size: 28px; color: var(--brown-primary);" id="ticket-total">S/ 0.00</strong>
+                    <strong
+                        style="font-family:'Cormorant Garamond',serif; font-size: 28px; color: var(--brown-primary);"
+                        id="ticket-total">S/ 0.00</strong>
                 </div>
-                <div style="font-size: 11px; color: var(--text-light); margin-top: 10px;">¡Gracias por preferir la exclusividad de GESTIONA TU BOUTIQUE!</div>
+                <div style="font-size: 11px; color: var(--text-light); margin-top: 10px;">¡Gracias por preferir la
+                    exclusividad de GESTIONA TU BOUTIQUE!</div>
             </div>
 
             <div class="modal-actions-row" style="margin-top: 20px;">
@@ -3222,7 +3373,7 @@
         function renderizarCarrito() {
             const container = document.getElementById('pos-cart-items');
             const mobileBadge = document.getElementById('mobile-cart-badge');
-            
+
             if (mobileBadge) {
                 mobileBadge.innerText = carritoPOS.length ? `POS (${carritoPOS.length})` : 'POS';
             }
@@ -3299,8 +3450,8 @@
 
         function mostrarTicketExito(venta, items, total) {
             document.getElementById('ticket-id').innerText = `#VEN-${String(venta.id).padStart(4, '0')}`;
-            document.getElementById('ticket-fecha').innerText = new Date().toLocaleString('es-PE', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
-            
+            document.getElementById('ticket-fecha').innerText = new Date().toLocaleString('es-PE', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+
             const cl = clientes.find(c => c.id == (venta.cliente?.id || document.getElementById('pos-select-cliente').value));
             document.getElementById('ticket-cliente').innerText = cl ? cl.nombres : 'Cliente Mostrador';
 
@@ -3400,9 +3551,9 @@
         // ==========================================================================
         function abrirModalCliente() { document.getElementById('modal-cliente').classList.add('open'); }
         function abrirModalEmpleado() { document.getElementById('modal-empleado').classList.add('open'); }
-        function abrirModalUsuario() { 
+        function abrirModalUsuario() {
             poblarSelectoresEmpleada();
-            document.getElementById('modal-usuario').classList.add('open'); 
+            document.getElementById('modal-usuario').classList.add('open');
         }
 
         function cerrarModales() {
@@ -3431,4 +3582,5 @@
         }
     </script>
 </body>
+
 </html>
