@@ -185,18 +185,17 @@
         }
 
         /* ==========================================================================
-           PANTALLA DE LOGIN CON MODO DEMO
+           PANTALLA DE LOGIN CON FONDO A PANTALLA COMPLETA & MOVIMIENTO CINEMÁTICO
            ========================================================================== */
         #login-screen {
             position: fixed;
             inset: 0;
             z-index: 10000;
-            background: linear-gradient(135deg, #FAF6F0 0%, #F5EBE1 50%, #FCECE9 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 24px;
-            backdrop-filter: blur(20px);
+            overflow: hidden;
             transition: opacity 0.4s ease, visibility 0.4s ease;
         }
 
@@ -206,77 +205,60 @@
             pointer-events: none;
         }
 
-        .login-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--border-soft);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-lg);
+        .login-bg-container {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .login-bg-img {
             width: 100%;
-            max-width: 940px;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            animation: kenBurnsFullScreen 24s infinite alternate ease-in-out;
+            filter: brightness(0.95);
+        }
+
+        @keyframes kenBurnsFullScreen {
+            0% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.1) translate(-2%, -1.5%); }
+            100% { transform: scale(1.04) translate(1.5%, 2%); }
+        }
+
+        .login-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at center, rgba(43, 24, 16, 0.35) 0%, rgba(43, 24, 16, 0.7) 100%),
+                linear-gradient(135deg, rgba(250, 246, 240, 0.2) 0%, rgba(133, 83, 61, 0.3) 100%);
+            backdrop-filter: blur(3px);
+        }
+
+        .login-card {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.93);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-xl);
+            box-shadow: 0 25px 60px rgba(43, 24, 16, 0.35);
+            width: 100%;
+            max-width: 960px;
             display: grid;
             grid-template-columns: 1.15fr 1fr;
             overflow: hidden;
-            position: relative;
         }
 
         .login-hero {
-            background: linear-gradient(150deg, #F5EBE1 0%, #F8EDE6 40%, #FCECE9 100%);
-            padding: 40px 44px;
+            background: linear-gradient(150deg, rgba(245, 235, 225, 0.92) 0%, rgba(248, 237, 230, 0.92) 40%, rgba(252, 236, 233, 0.92) 100%);
+            padding: 44px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
             border-right: 1px solid var(--border-soft);
-        }
-
-        .hero-image-box {
-            position: relative;
-            width: 100%;
-            height: 160px;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            margin: 14px 0 16px;
-            border: 2px solid rgba(255, 255, 255, 0.85);
-            box-shadow: 0 10px 25px rgba(133, 83, 61, 0.15);
-        }
-
-        .hero-image-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            animation: kenBurnsMotion 18s infinite alternate ease-in-out;
-        }
-
-        @keyframes kenBurnsMotion {
-            0% { transform: scale(1) translate(0, 0); }
-            50% { transform: scale(1.08) translate(-1.5%, -1.5%); }
-            100% { transform: scale(1.03) translate(1.5%, 1%); }
-        }
-
-        .hero-image-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(245, 235, 225, 0.05) 0%, rgba(133, 83, 61, 0.2) 100%);
-            pointer-events: none;
-        }
-
-        .hero-image-tag {
-            position: absolute;
-            bottom: 10px;
-            left: 12px;
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(8px);
-            color: var(--brown-primary);
-            font-size: 11px;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 20px;
-            border: 1px solid var(--border-soft);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         .brand-badge {
@@ -1521,20 +1503,18 @@
          PANTALLA DE ACCESO (LOGIN) CON EXPLORADOR MODO DEMO
          ========================================================================== -->
     <div id="login-screen">
+        <!-- Fondo a Pantalla Completa Animado con Movimiento Ken-Burns -->
+        <div class="login-bg-container">
+            <img src="/images/boutique_hero.jpg" alt="Showroom Boutique de Lujo" class="login-bg-img">
+            <div class="login-bg-overlay"></div>
+        </div>
+
         <div class="login-card">
             <!-- Columna Izquierda: Hero con opciones DEMO interactivas -->
             <div class="login-hero">
                 <div>
                     <div class="brand-badge"><i class="fa-solid fa-gem"></i> GESTIONA TU BOUTIQUE</div>
                     <h1 class="hero-title">Sistema de Gestión & Retail de Moda</h1>
-
-                    <!-- Imagen de Boutique con Movimiento Intuitivo Ken-Burns -->
-                    <div class="hero-image-box">
-                        <img src="/images/boutique_hero.jpg" alt="Showroom de Moda Gestiona Tu Boutique">
-                        <div class="hero-image-overlay"></div>
-                        <div class="hero-image-tag"><i class="fa-solid fa-sparkles"></i> Atelier & Haute Couture</div>
-                    </div>
-
                     <p class="hero-desc">
                         Control integral de inventario, catálogo de prendas exclusivas, cartera de clientas VIP, asesoras de imagen y punto de venta express.
                     </p>
