@@ -28,4 +28,9 @@ public class VentaController {
     public Venta obtener(@PathVariable Long id) {
         return service.obtener(id);
     }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable Long id) {
+        service.eliminar(id);
+    }
 }

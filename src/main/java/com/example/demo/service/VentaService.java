@@ -18,10 +18,17 @@ public class VentaService {
     }
 
     public Venta guardar(Venta venta) {
+        if (venta.getFecha() == null) {
+            venta.setFecha(java.time.LocalDateTime.now());
+        }
         return repository.save(venta);
     }
 
     public Venta obtener(Long id) {
         return repository.findById(id).orElse(null);
+    }
+
+    public void eliminar(Long id) {
+        repository.deleteById(id);
     }
 }
