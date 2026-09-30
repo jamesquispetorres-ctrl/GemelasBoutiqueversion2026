@@ -222,12 +222,61 @@
 
         .login-hero {
             background: linear-gradient(150deg, #F5EBE1 0%, #F8EDE6 40%, #FCECE9 100%);
-            padding: 48px;
+            padding: 40px 44px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
             border-right: 1px solid var(--border-soft);
+        }
+
+        .hero-image-box {
+            position: relative;
+            width: 100%;
+            height: 160px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin: 14px 0 16px;
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 10px 25px rgba(133, 83, 61, 0.15);
+        }
+
+        .hero-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: kenBurnsMotion 18s infinite alternate ease-in-out;
+        }
+
+        @keyframes kenBurnsMotion {
+            0% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.08) translate(-1.5%, -1.5%); }
+            100% { transform: scale(1.03) translate(1.5%, 1%); }
+        }
+
+        .hero-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(245, 235, 225, 0.05) 0%, rgba(133, 83, 61, 0.2) 100%);
+            pointer-events: none;
+        }
+
+        .hero-image-tag {
+            position: absolute;
+            bottom: 10px;
+            left: 12px;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(8px);
+            color: var(--brown-primary);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .brand-badge {
@@ -1478,6 +1527,14 @@
                 <div>
                     <div class="brand-badge"><i class="fa-solid fa-gem"></i> GESTIONA TU BOUTIQUE</div>
                     <h1 class="hero-title">Sistema de Gestión & Retail de Moda</h1>
+
+                    <!-- Imagen de Boutique con Movimiento Intuitivo Ken-Burns -->
+                    <div class="hero-image-box">
+                        <img src="/images/boutique_hero.jpg" alt="Showroom de Moda Gestiona Tu Boutique">
+                        <div class="hero-image-overlay"></div>
+                        <div class="hero-image-tag"><i class="fa-solid fa-sparkles"></i> Atelier & Haute Couture</div>
+                    </div>
+
                     <p class="hero-desc">
                         Control integral de inventario, catálogo de prendas exclusivas, cartera de clientas VIP, asesoras de imagen y punto de venta express.
                     </p>
