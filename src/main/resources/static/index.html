@@ -1603,17 +1603,86 @@
         }
 
         /* --------------------------------------------------------------------------
-           MEDIA QUERIES RESPONSIVAS STRICTAS (CSS NATIVO SIN JS DE TAMAÑO)
+           BREAKPOINTS RESPONSIVOS ESTRUCTURADOS (MOBILE-FIRST & ADAPTATIVOS)
            -------------------------------------------------------------------------- */
 
-        /* 1. MÓVIL (< 768px): Botón hamburguesa arriba a la izquierda, sin barra navegable horizontal, status pills en el desplegable */
+        /* 1. MÓVIL EXTRA PEQUEÑO (320px – 375px) */
+        @media (max-width: 375px) {
+            .app-navbar-horizontal {
+                padding: 0 12px;
+                height: 60px;
+            }
+
+            .brand-titles h1 {
+                font-size: 16px;
+            }
+
+            .brand-titles span {
+                display: none;
+            }
+
+            .login-card {
+                padding: 16px 12px;
+                border-radius: var(--radius-lg);
+            }
+
+            .login-hero {
+                padding: 20px 14px;
+            }
+
+            .login-form-area {
+                padding: 20px 14px;
+            }
+
+            .hero-title {
+                font-size: 26px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .role-chips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-box {
+                padding: 16px 12px;
+                width: 96%;
+            }
+
+            .btn-main, .btn-action {
+                min-height: 44px;
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+        }
+
+        /* 2. MÓVIL ESTÁNDAR (376px – 480px) */
+        @media (min-width: 376px) and (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+                gap: 12px;
+            }
+
+            .role-chips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-box {
+                padding: 20px 16px;
+                width: 94%;
+            }
+        }
+
+        /* 3. MÓVIL Y TABLET PEQUEÑA (< 768px - Reglas Generales de Móvil) */
         @media (max-width: 767.98px) {
             .hamburger-btn {
                 display: flex !important;
             }
 
             .top-nav-right-group {
-                display: none !important; /* Oculta la fila navegable y status pills en la barra superior */
+                display: none !important; /* Oculta la barra navegable y status pills en la cabecera */
             }
 
             .mobile-dropdown-menu {
@@ -1622,10 +1691,12 @@
 
             main.main-viewport {
                 padding: 16px 14px 32px;
+                width: 100%;
             }
 
             .metrics-grid {
                 grid-template-columns: 1fr;
+                gap: 14px;
             }
 
             .pos-layout {
@@ -1635,16 +1706,32 @@
 
             .plans-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
 
             .table-wrapper {
-                margin: 0 -14px;
+                margin: 0 -14px 20px;
                 width: calc(100% + 28px);
                 border-radius: 0;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .table-wrapper table {
+                min-width: 580px;
+            }
+
+            .login-card {
+                grid-template-columns: 1fr;
+                max-width: 460px;
+            }
+
+            .form-row-2col {
+                grid-template-columns: 1fr !important;
             }
         }
 
-        /* 2. TABLET (768px – 1024px): Mostrar la fila navegable a la derecha, abreviando las etiquetas a solo íconos */
+        /* 4. TABLETS (768px – 1024px): Navegación abreviada a íconos a la derecha */
         @media (min-width: 768px) and (max-width: 1024px) {
             .hamburger-btn {
                 display: none !important;
@@ -1660,7 +1747,7 @@
             }
 
             .nav-link-item .nav-label-text {
-                display: none !important; /* Abrevia las etiquetas a solo íconos */
+                display: none !important; /* Abrevia etiquetas a solo íconos */
             }
 
             .nav-link-item {
@@ -1670,14 +1757,20 @@
 
             .metrics-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
             }
 
             .pos-layout {
                 grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .plans-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        /* 3. DESKTOP (> 1024px): Fila navegable completa con íconos + etiquetas alineados a la derecha, status pills visibles */
+        /* 5. LAPTOPS & DESKTOP (1025px – 1440px): Navegación completa alineada a la derecha */
         @media (min-width: 1024.02px) {
             .hamburger-btn {
                 display: none !important;
@@ -1694,6 +1787,33 @@
 
             .nav-link-item .nav-label-text {
                 display: inline-block !important;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+
+            .pos-layout {
+                grid-template-columns: 1.35fr 1fr;
+                gap: 24px;
+            }
+
+            .plans-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* 6. MONITORES PANTALLA GRANDE (1441px en adelante) */
+        @media (min-width: 1441px) {
+            main.main-viewport {
+                max-width: 1440px;
+                margin: 0 auto;
+                padding: 32px 24px;
+            }
+
+            .garment-card {
+                padding: 18px;
             }
         }
     </style>
