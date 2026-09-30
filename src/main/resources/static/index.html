@@ -1438,61 +1438,31 @@
         }
 
         /* ==========================================================================
-           CABECERA DE NAVEGACIÓN SUPERIOR & BREAKPOINTS RESPONSIVOS
+           ADAPTACIÓN RESPONSIVA QUIRÚRGICA (DESKTOP INTACTO + MÓVIL DRAWER)
            ========================================================================== */
-        .app-navbar-horizontal {
+        .mobile-top-bar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
             background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-soft);
-            height: 64px;
+            z-index: 999;
             padding: 0 16px;
-            display: flex;
             align-items: center;
             justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(97, 61, 45, 0.04);
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .navbar-left-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-shrink: 0;
-        }
-
-        .navbar-left-brand .brand-icon-box {
-            width: 36px;
-            height: 36px;
-            font-size: 16px;
-            flex-shrink: 0;
-        }
-
-        .navbar-left-brand .brand-titles h1 {
-            font-size: 16px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 200px;
-            margin: 0;
-            line-height: 1.1;
-        }
-
-        .navbar-left-brand .brand-titles span {
-            font-size: 9px;
-            letter-spacing: 1px;
-            display: block;
+            box-shadow: 0 4px 15px rgba(97, 61, 45, 0.05);
         }
 
         .hamburger-btn {
             background: transparent;
             border: none;
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -1500,11 +1470,6 @@
             gap: 5px;
             cursor: pointer;
             border-radius: var(--radius-sm);
-            transition: var(--transition);
-        }
-
-        .hamburger-btn:active {
-            background: var(--bg-subtle);
         }
 
         .hamburger-btn span {
@@ -1529,169 +1494,131 @@
             transform: translateY(-7px) rotate(-45deg);
         }
 
-        .top-nav-right-group {
+        .mobile-brand-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-title);
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-left: auto; /* Alinea los elementos de navegación a la DERECHA en Desktop y Tablet */
+            gap: 8px;
         }
 
-        .top-nav-links {
+        .mobile-cart-badge-btn {
+            background: var(--bg-pastel-rose);
+            border: 1px solid var(--border-soft);
+            color: var(--brown-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 6px;
-        }
-
-        .nav-link-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            border-radius: var(--radius-md);
-            color: var(--text-body);
-            text-decoration: none;
-            font-size: 13.5px;
-            font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
         }
 
-        .nav-link-item:hover {
-            background: var(--bg-subtle);
-            color: var(--brown-primary);
-        }
-
-        .nav-link-item.active {
-            background: var(--bg-pastel-rose);
-            color: var(--brown-primary);
-        }
-
-        .desktop-status-pills {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-left: 10px;
-        }
-
-        /* MENÚ DESPLEGABLE DE MÓVIL (< 768px FULL-WIDTH DROPDOWN) */
-        .mobile-dropdown-menu {
-            display: none;
+        .sidebar-overlay {
             position: fixed;
-            top: 68px;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-soft);
-            box-shadow: 0 16px 36px rgba(43, 24, 16, 0.16);
-            z-index: 999;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
-            padding: 0 20px;
+            inset: 0;
+            background: rgba(43, 24, 16, 0.45);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
-        .mobile-dropdown-menu.open {
-            max-height: 520px;
-            padding: 20px;
-        }
-
-        .mobile-vertical-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .mobile-nav-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            border-radius: var(--radius-md);
-            color: var(--text-body);
-            font-size: 14.5px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .mobile-nav-link:active, .mobile-nav-link.active {
-            background: var(--bg-pastel-rose);
-            color: var(--brown-primary);
-        }
-
-        .mobile-status-pills-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 16px;
-            padding-top: 14px;
-            border-top: 1px dashed var(--border-soft);
+        .sidebar-overlay.open {
+            opacity: 1;
+            visibility: visible;
         }
 
         /* --------------------------------------------------------------------------
-           BREAKPOINTS RESPONSIVOS ESTRUCTURADOS (MOBILE-FIRST & ADAPTATIVOS)
+           REGLAS RESPONSIVAS EXCLUSIVAMENTE PARA MÓVIL Y TABLET (<= 992px)
            -------------------------------------------------------------------------- */
-
-        /* 1. MÓVIL EXTRA PEQUEÑO (320px – 375px) */
-        @media (max-width: 375px) {
-            .app-navbar-horizontal {
-                padding: 0 12px;
-                height: 60px;
+        @media (max-width: 992px) {
+            .mobile-top-bar {
+                display: flex;
             }
 
-            .brand-titles h1 {
-                font-size: 16px;
+            #app-container {
+                flex-direction: column;
             }
 
-            .brand-titles span {
-                display: none;
+            aside.app-sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 280px;
+                z-index: 1001;
+                transform: translateX(-100%);
+                transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 10px 0 30px rgba(43, 24, 16, 0.2);
+            }
+
+            aside.app-sidebar.open {
+                transform: translateX(0);
+            }
+
+            main.main-viewport {
+                margin-left: 0 !important;
+                width: 100% !important;
+                padding: 76px 16px 36px !important;
+                box-sizing: border-box;
+            }
+
+            header.app-topbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                margin-bottom: 24px;
+            }
+
+            .topbar-actions {
+                width: 100%;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+
+            .pos-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .plans-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
 
             .login-card {
-                padding: 16px 12px;
-                border-radius: var(--radius-lg);
-            }
-
-            .login-hero {
-                padding: 20px 14px;
-            }
-
-            .login-form-area {
-                padding: 20px 14px;
-            }
-
-            .hero-title {
-                font-size: 26px;
-            }
-
-            .products-grid {
                 grid-template-columns: 1fr;
+                max-width: 480px;
             }
 
-            .role-chips-grid {
-                grid-template-columns: 1fr;
+            .table-wrapper {
+                margin: 0 -16px 20px;
+                width: calc(100% + 32px);
+                border-radius: 0;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
-            .modal-box {
-                padding: 16px 12px;
-                width: 96%;
-            }
-
-            .btn-main, .btn-action {
-                min-height: 44px;
-                padding: 10px 12px;
-                font-size: 13px;
+            .table-wrapper table {
+                min-width: 580px;
             }
         }
 
-        /* 2. MÓVIL ESTÁNDAR (376px – 480px) */
-        @media (min-width: 376px) and (max-width: 480px) {
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
-                gap: 12px;
+        @media (max-width: 640px) {
+            .metrics-grid {
+                grid-template-columns: 1fr;
             }
 
             .role-chips-grid {
@@ -1701,159 +1628,12 @@
             .modal-box {
                 padding: 20px 16px;
                 width: 94%;
-            }
-        }
-
-        /* 3. MÓVIL Y TABLET PEQUEÑA (< 768px - Reglas Generales de Móvil) */
-        @media (max-width: 767.98px) {
-            .navbar-left-brand .brand-titles span {
-                display: none;
-            }
-
-            .navbar-left-brand .brand-titles h1 {
-                font-size: 14px;
-                max-width: 145px;
-            }
-
-            .hamburger-btn {
-                display: flex !important;
-            }
-
-            .top-nav-right-group {
-                display: none !important; /* Oculta la barra navegable y status pills en la cabecera */
-            }
-
-            .mobile-dropdown-menu {
-                display: block;
-            }
-
-            main.main-viewport {
-                padding: 16px 14px 32px;
-                margin-left: 0 !important;
-                width: 100% !important;
-                box-sizing: border-box;
-            }
-
-            .metrics-grid {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-
-            .pos-layout {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-
-            .plans-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .table-wrapper {
-                margin: 0 -14px 20px;
-                width: calc(100% + 28px);
-                border-radius: 0;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .table-wrapper table {
-                min-width: 580px;
-            }
-
-            .login-card {
-                grid-template-columns: 1fr;
-                max-width: 460px;
+                max-height: 90vh;
+                overflow-y: auto;
             }
 
             .form-row-2col {
                 grid-template-columns: 1fr !important;
-            }
-        }
-
-        /* 4. TABLETS (768px – 1024px): Navegación abreviada a íconos a la derecha */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .hamburger-btn {
-                display: none !important;
-            }
-
-            .mobile-dropdown-menu {
-                display: none !important;
-            }
-
-            .top-nav-right-group {
-                display: flex !important;
-                margin-left: auto;
-            }
-
-            .nav-link-item .nav-label-text {
-                display: none !important; /* Abrevia etiquetas a solo íconos */
-            }
-
-            .nav-link-item {
-                padding: 10px 12px;
-                font-size: 16px;
-            }
-
-            .metrics-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 18px;
-            }
-
-            .pos-layout {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .plans-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* 5. LAPTOPS & DESKTOP (1025px – 1440px): Navegación completa alineada a la derecha */
-        @media (min-width: 1024.02px) {
-            .hamburger-btn {
-                display: none !important;
-            }
-
-            .mobile-dropdown-menu {
-                display: none !important;
-            }
-
-            .top-nav-right-group {
-                display: flex !important;
-                margin-left: auto; /* Alineación a la DERECHA */
-            }
-
-            .nav-link-item .nav-label-text {
-                display: inline-block !important;
-            }
-
-            .metrics-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 20px;
-            }
-
-            .pos-layout {
-                grid-template-columns: 1.35fr 1fr;
-                gap: 24px;
-            }
-
-            .plans-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        /* 6. MONITORES PANTALLA GRANDE (1441px en adelante) */
-        @media (min-width: 1441px) {
-            main.main-viewport {
-                max-width: 1440px;
-                margin: 0 auto;
-                padding: 32px 24px;
-            }
-
-            .garment-card {
-                padding: 18px;
             }
         }
     </style>
@@ -1996,19 +1776,27 @@
     <!-- ==========================================================================
          SISTEMA INTERIOR DE LA BOUTIQUE
          ========================================================================== -->
-    <!-- ==========================================================================
-         SISTEMA INTERIOR DE LA BOUTIQUE
-         ========================================================================== -->
     <div id="app-container">
-        <!-- BARRA DE NAVEGACIÓN HORIZONTAL SUPERIOR (LOGO IZQUIERDA / MENÚ A LA DERECHA) -->
-        <header class="app-navbar-horizontal">
-            <div class="navbar-left-brand">
-                <!-- BOTÓN HAMBURGUESA (Solo visible en Móvil < 768px arriba a la izquierda) -->
-                <button class="hamburger-btn" id="hamburger-toggle-btn" onclick="toggleMobileMenu()" aria-label="Abrir menú de navegación">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+        <!-- BARRA SUPERIOR MÓVIL (Smartphones & Tablets <= 992px) -->
+        <div class="mobile-top-bar">
+            <button class="hamburger-btn" id="hamburger-toggle-btn" onclick="toggleMobileSidebar()" aria-label="Abrir menú de navegación">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="mobile-brand-title">
+                <i class="fa-solid fa-gem" style="color: var(--gold-accent);"></i> GESTIONA TU BOUTIQUE
+            </div>
+            <button class="mobile-cart-badge-btn" onclick="cambiarVista('pos')">
+                <i class="fa-solid fa-cash-register"></i>
+                <span id="mobile-cart-badge">POS</span>
+            </button>
+        </div>
+        <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeMobileSidebar()"></div>
+
+        <!-- SIDEBAR BOUTIQUE ORIGINAL -->
+        <aside class="app-sidebar" id="app-sidebar">
+            <div class="sidebar-brand">
                 <div class="brand-icon-box"><i class="fa-solid fa-gem"></i></div>
                 <div class="brand-titles">
                     <h1>GESTIONA TU BOUTIQUE</h1>
@@ -2016,101 +1804,81 @@
                 </div>
             </div>
 
-            <!-- GRUPO DERECHO: Navegación & Status Pills (Alineados a la DERECHA en Desktop > 1024px y Tablet 768-1024px) -->
-            <div class="top-nav-right-group">
-                <nav class="top-nav-links">
-                    <a class="nav-link-item active" id="nav-item-dashboard" onclick="cambiarVista('dashboard')">
-                        <i class="fa-solid fa-chart-pie"></i>
-                        <span class="nav-label-text">Dashboard</span>
-                    </a>
-                    <a class="nav-link-item" id="nav-item-pos" onclick="cambiarVista('pos')">
-                        <i class="fa-solid fa-cash-register"></i>
-                        <span class="nav-label-text">POS</span>
-                    </a>
-                    <a class="nav-link-item" id="nav-item-ventas" onclick="cambiarVista('ventas')">
-                        <i class="fa-solid fa-receipt"></i>
-                        <span class="nav-label-text">Ventas</span>
-                    </a>
-                    <a class="nav-link-item" id="nav-item-clientes" onclick="cambiarVista('clientes')">
-                        <i class="fa-solid fa-crown"></i>
-                        <span class="nav-label-text">Clientes</span>
-                    </a>
-                    <a class="nav-link-item" id="nav-item-empleados" onclick="cambiarVista('empleados')">
-                        <i class="fa-solid fa-user-tie"></i>
-                        <span class="nav-label-text">Equipo</span>
-                    </a>
-                    <a class="nav-link-item" id="nav-item-usuarios" onclick="cambiarVista('usuarios')">
-                        <i class="fa-solid fa-id-card"></i>
-                        <span class="nav-label-text">Accesos</span>
-                    </a>
-                    <a class="nav-link-item" id="nav-item-planes" onclick="cambiarVista('planes')">
-                        <i class="fa-solid fa-gem"></i>
-                        <span class="nav-label-text">Planes</span>
-                    </a>
-                </nav>
+            <nav class="sidebar-nav">
+                <div class="nav-category">Principal</div>
+                <a class="nav-btn active" id="nav-item-dashboard" onclick="cambiarVista('dashboard')">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a class="nav-btn" onclick="cambiarVista('pos')">
+                    <i class="fa-solid fa-cash-register"></i>
+                    <span>Catálogo & POS</span>
+                    <span class="nav-badge">Express</span>
+                </a>
+                <a class="nav-btn" onclick="cambiarVista('ventas')">
+                    <i class="fa-solid fa-receipt"></i>
+                    <span>Historial de Ventas</span>
+                </a>
 
-                <!-- STATUS PILLS EN DESKTOP & TABLET -->
-                <div class="desktop-status-pills">
+                <div class="nav-category">Gestión Comercial</div>
+                <a class="nav-btn" onclick="cambiarVista('clientes')">
+                    <i class="fa-solid fa-crown"></i>
+                    <span>Cartera de Clientes</span>
+                </a>
+                <a class="nav-btn" id="nav-item-empleados" onclick="cambiarVista('empleados')">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span>Equipo & Asesoras</span>
+                </a>
+                <a class="nav-btn" id="nav-item-usuarios" onclick="cambiarVista('usuarios')">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>Cuentas de Acceso</span>
+                </a>
+
+                <div class="nav-category">Negocio & Crecimiento</div>
+                <a class="nav-btn" onclick="cambiarVista('planes')">
+                    <i class="fa-solid fa-gem"></i>
+                    <span>Elegir Planes</span>
+                    <span class="nav-badge" style="background: var(--bg-pastel-vanilla); color: var(--caramel);">VIP</span>
+                </a>
+            </nav>
+
+            <!-- ESQUINA INFERIOR IZQUIERDA: CONTROL INTERACTIVO DE ROL DEMO -->
+            <div class="bottom-left-role-card">
+                <div class="current-role-banner">
+                    <div class="role-avatar-circle" id="current-role-avatar">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+                    <div class="role-info-meta">
+                        <h5 id="current-role-name">Administradora</h5>
+                        <span id="current-role-desc">Acceso Total</span>
+                    </div>
+                </div>
+                <button class="btn-switch-role" onclick="abrirModalCambiarRol()">
+                    <i class="fa-solid fa-arrows-rotate"></i> Cambiar Rol DEMO
+                </button>
+            </div>
+        </aside>
+
+        <!-- VIEWPORT PRINCIPAL ORIGINAL -->
+        <main class="main-viewport">
+            <!-- TOPBAR ORIGINAL -->
+            <header class="app-topbar">
+                <div class="topbar-titles">
+                    <h2 id="view-title">Dashboard Ejecutivo</h2>
+                    <p id="view-subtitle">Resumen comercial y métricas en tiempo real de GESTIONA TU BOUTIQUE</p>
+                </div>
+                <div class="topbar-actions">
                     <span class="pill-tag pill-role" id="topbar-role-pill">
                         <i class="fa-solid fa-crown"></i> Modo: Administradora
                     </span>
                     <span class="pill-tag pill-active-plan" onclick="cambiarVista('planes')">
-                        <i class="fa-solid fa-star"></i> Plan: <strong id="active-plan-name" style="margin-left:4px;">Boutique Pro</strong>
+                        <i class="fa-solid fa-star"></i> Plan Actual: <strong id="active-plan-name" style="margin-left:4px;">Boutique Pro</strong>
                     </span>
                     <button class="btn-action btn-action-soft" onclick="cerrarSesionDemo()" title="Cerrar Sesión / Volver al Login">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Salir
                     </button>
                 </div>
-            </div>
-        </header>
-
-        <!-- MENÚ DESPLEGABLE DE ANCHO COMPLETO PARA MÓVIL (< 768px) -->
-        <div class="mobile-dropdown-menu" id="mobile-dropdown-menu">
-            <nav class="mobile-vertical-nav">
-                <a class="mobile-nav-link active" onclick="cambiarVista('dashboard')">
-                    <i class="fa-solid fa-chart-pie"></i> <span>Dashboard Ejecutivo</span>
-                </a>
-                <a class="mobile-nav-link" onclick="cambiarVista('pos')">
-                    <i class="fa-solid fa-cash-register"></i> <span>Catálogo & POS Express</span>
-                </a>
-                <a class="mobile-nav-link" onclick="cambiarVista('ventas')">
-                    <i class="fa-solid fa-receipt"></i> <span>Historial de Ventas</span>
-                </a>
-                <a class="mobile-nav-link" onclick="cambiarVista('clientes')">
-                    <i class="fa-solid fa-crown"></i> <span>Cartera de Clientes VIP</span>
-                </a>
-                <a class="mobile-nav-link" onclick="cambiarVista('empleados')">
-                    <i class="fa-solid fa-user-tie"></i> <span>Equipo & Asesoras</span>
-                </a>
-                <a class="mobile-nav-link" onclick="cambiarVista('usuarios')">
-                    <i class="fa-solid fa-id-card"></i> <span>Cuentas de Acceso</span>
-                </a>
-                <a class="mobile-nav-link" onclick="cambiarVista('planes')">
-                    <i class="fa-solid fa-gem"></i> <span>Planes de Suscripción VIP</span>
-                </a>
-            </nav>
-
-            <!-- STATUS PILLS DENTRO DEL MENÚ DESPLEGABLE MÓVIL -->
-            <div class="mobile-status-pills-container">
-                <span class="pill-tag pill-role" id="mobile-topbar-role-pill">
-                    <i class="fa-solid fa-crown"></i> Modo: Administradora
-                </span>
-                <span class="pill-tag pill-active-plan" onclick="cambiarVista('planes')">
-                    <i class="fa-solid fa-star"></i> Plan: <strong id="mobile-active-plan-name" style="margin-left:4px;">Boutique Pro</strong>
-                </span>
-                <button class="btn-action btn-action-soft" onclick="cerrarSesionDemo()" style="width: 100%; justify-content: center; margin-top: 4px;">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Salir del Sistema
-                </button>
-            </div>
-        </div>
-
-        <!-- VIEWPORT PRINCIPAL -->
-        <main class="main-viewport" style="width: 100%; max-width: 1400px; margin: 0 auto;">
-            <!-- SUB-HEADER DE TÍTULO DE VISTA -->
-            <div class="view-header-title-box" style="margin-bottom: 24px;">
-                <h2 id="view-title" style="font-family:'Cormorant Garamond',serif; font-size: 32px; color: var(--text-title);">Dashboard Ejecutivo</h2>
-                <p id="view-subtitle" style="font-size: 14px; color: var(--text-muted);">Resumen comercial y métricas en tiempo real de GESTIONA TU BOUTIQUE</p>
-            </div>
+            </header>
 
             <!-- TARJETAS DE MÉTRICAS GLOBALES -->
             <div class="metrics-row">
@@ -3062,19 +2830,23 @@
         }
 
         // ==========================================================================
-        // CONTROL DEL MENÚ DESPLEGABLE MÓVIL (< 768px)
+        // CONTROL DEL MENÚ MÓVIL SLIDE-OUT DRAWER
         // ==========================================================================
-        function toggleMobileMenu() {
-            const dropdown = document.getElementById('mobile-dropdown-menu');
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('app-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
             const btn = document.getElementById('hamburger-toggle-btn');
-            if (dropdown) dropdown.classList.toggle('open');
+            if (sidebar) sidebar.classList.toggle('open');
+            if (overlay) overlay.classList.toggle('open');
             if (btn) btn.classList.toggle('active');
         }
 
-        function closeMobileMenu() {
-            const dropdown = document.getElementById('mobile-dropdown-menu');
+        function closeMobileSidebar() {
+            const sidebar = document.getElementById('app-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
             const btn = document.getElementById('hamburger-toggle-btn');
-            if (dropdown) dropdown.classList.remove('open');
+            if (sidebar) sidebar.classList.remove('open');
+            if (overlay) overlay.classList.remove('open');
             if (btn) btn.classList.remove('active');
         }
 
@@ -3082,7 +2854,7 @@
         // NAVEGACIÓN DE VISTAS (TABS)
         // ==========================================================================
         function cambiarVista(vistaId) {
-            closeMobileMenu();
+            closeMobileSidebar();
 
             // El dashboard solo está visible y permitido para la Administradora
             if (vistaId === 'dashboard' && rolActual !== 'admin') {
@@ -3091,17 +2863,13 @@
             }
 
             document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.nav-link-item').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.mobile-nav-link').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
 
             const targetSection = document.getElementById(`view-${vistaId}`);
             if (targetSection) targetSection.classList.add('active');
 
-            const btnDesktop = Array.from(document.querySelectorAll('.nav-link-item')).find(el => el.getAttribute('onclick')?.includes(vistaId));
-            if (btnDesktop) btnDesktop.classList.add('active');
-
-            const btnMobile = Array.from(document.querySelectorAll('.mobile-nav-link')).find(el => el.getAttribute('onclick')?.includes(vistaId));
-            if (btnMobile) btnMobile.classList.add('active');
+            const btn = Array.from(document.querySelectorAll('.nav-btn')).find(el => el.getAttribute('onclick')?.includes(vistaId));
+            if (btn) btn.classList.add('active');
 
             const cabeceras = {
                 'dashboard': ['Dashboard Ejecutivo', 'Resumen comercial y métricas en tiempo real de GESTIONA TU BOUTIQUE'],
