@@ -696,10 +696,13 @@
 
         /* CONTENIDO PRINCIPAL */
         main.main-viewport {
-            margin-left: 275px;
+            margin-left: 0;
+            width: 100%;
             flex: 1;
-            padding: 36px 48px;
-            max-width: 1500px;
+            padding: 32px 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+            box-sizing: border-box;
         }
 
         header.app-topbar {
@@ -1442,8 +1445,8 @@
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-soft);
-            height: 68px;
-            padding: 0 24px;
+            height: 64px;
+            padding: 0 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -1451,12 +1454,38 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 20px rgba(97, 61, 45, 0.04);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .navbar-left-brand {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .navbar-left-brand .brand-icon-box {
+            width: 36px;
+            height: 36px;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .navbar-left-brand .brand-titles h1 {
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .navbar-left-brand .brand-titles span {
+            font-size: 9px;
+            letter-spacing: 1px;
+            display: block;
         }
 
         .hamburger-btn {
@@ -1677,6 +1706,15 @@
 
         /* 3. MÓVIL Y TABLET PEQUEÑA (< 768px - Reglas Generales de Móvil) */
         @media (max-width: 767.98px) {
+            .navbar-left-brand .brand-titles span {
+                display: none;
+            }
+
+            .navbar-left-brand .brand-titles h1 {
+                font-size: 14px;
+                max-width: 145px;
+            }
+
             .hamburger-btn {
                 display: flex !important;
             }
@@ -1691,7 +1729,9 @@
 
             main.main-viewport {
                 padding: 16px 14px 32px;
-                width: 100%;
+                margin-left: 0 !important;
+                width: 100% !important;
+                box-sizing: border-box;
             }
 
             .metrics-grid {
