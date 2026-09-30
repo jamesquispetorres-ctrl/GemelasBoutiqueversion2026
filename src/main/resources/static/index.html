@@ -57,20 +57,64 @@
             --transition: all 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        * {
+        /* IMPORTANTE: evita que padding/border aumenten el ancho */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-width: 0;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        button, input, select, textarea {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Regla de preservación para todos los iconos de Font Awesome */
+        .fa, .fas, .far, .fa-solid, .fa-regular, [class*="fa-"] {
+            font-family: "Font Awesome 6 Free" !important;
+        }
+        .fa-solid, .fas {
+            font-weight: 900 !important;
+        }
+        .fa-regular, .far {
+            font-weight: 400 !important;
+        }
+        .fa-brands, .fab {
+            font-family: "Font Awesome 6 Brands" !important;
+            font-weight: 400 !important;
+        }
+        .fa::before, .fas::before, .fa-solid::before, [class*="fa-"]::before {
+            font-family: "Font Awesome 6 Free" !important;
+        }
+        .fa-brands::before, .fab::before {
+            font-family: "Font Awesome 6 Brands" !important;
         }
 
         body {
             background-color: var(--bg-body);
             color: var(--text-body);
             min-height: 100vh;
-            overflow-x: hidden;
+            min-height: 100dvh;
             display: flex;
             flex-direction: column;
+        }
+
+        #login-screen,
+        .login-card,
+        .login-hero,
+        .login-form-area {
+            min-width: 0;
         }
 
         h1,
@@ -225,7 +269,8 @@
             align-items: center;
             justify-content: center;
             padding: 24px;
-            overflow: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             transition: opacity 0.4s ease, visibility 0.4s ease;
         }
 
@@ -236,10 +281,11 @@
         }
 
         .login-bg-container {
-            position: absolute;
+            position: fixed;
             inset: 0;
             z-index: 0;
             overflow: hidden;
+            background: linear-gradient(135deg, #3D261C 0%, #85533D 55%, #F4ACB7 100%);
         }
 
         .login-bg-img {
@@ -287,6 +333,7 @@
             display: grid;
             grid-template-columns: 1.15fr 1fr;
             overflow: hidden;
+            margin: auto;
         }
 
         .login-hero {
@@ -532,6 +579,221 @@
             text-decoration: underline;
             cursor: pointer;
             margin-left: 4px;
+        }
+
+        .login-mobile-brand {
+            display: none;
+        }
+
+        .mobile-role-chip-mini {
+            display: none;
+        }
+
+        .mobile-role-selector-box {
+            display: none;
+        }
+
+        /* =========================================================
+           RESPONSIVE LOGIN
+           ========================================================= */
+
+        /* TABLET */
+        @media (max-width: 900px) {
+
+            #login-screen {
+                padding: 16px;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            .login-card {
+                width: 100%;
+                max-width: 700px;
+                grid-template-columns: 1fr;
+                margin: auto;
+            }
+
+            .login-hero {
+                padding: 30px;
+                border-right: none;
+                border-bottom: 1px solid var(--border-soft);
+            }
+
+            .login-form-area {
+                padding: 30px;
+            }
+        }
+
+
+        /* =========================================================
+           CELULAR (SMARTPHONE) - SOLO LOGIN, DEMO 1 CLIC Y MARCA
+           ========================================================= */
+
+        @media (max-width: 600px) {
+
+            #login-screen {
+                position: fixed;
+                inset: 0;
+                width: 100%;
+                height: 100dvh;
+                padding: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            /* En smartphone se oculta el hero/descripciones y los chips de roles del inicio */
+            .login-hero {
+                display: none !important;
+            }
+
+            /* Se muestra únicamente el nombre de la página/boutique al inicio */
+            .login-mobile-brand {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 18px;
+            }
+
+            .login-mobile-brand .brand-badge {
+                font-size: 13px;
+                font-weight: 700;
+                padding: 9px 18px;
+                letter-spacing: 1.5px;
+                border-radius: 30px;
+                background: #FFFFFF;
+                border: 1px solid var(--border-soft);
+                color: var(--brown-primary);
+                box-shadow: 0 4px 15px rgba(133, 83, 61, 0.12);
+            }
+
+            /* TARJETA DE LOGIN MÓVIL */
+            .login-card {
+                width: 100%;
+                max-width: 420px;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 15px 45px rgba(43, 24, 16, 0.35);
+            }
+
+            /* FORMULARIO */
+            .login-form-area {
+                width: 100%;
+                min-width: 0;
+                padding: 28px 22px 26px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .form-header {
+                width: 100%;
+                text-align: center;
+            }
+
+            .form-header h2 {
+                font-size: 26px;
+                line-height: 1.2;
+                margin-bottom: 5px;
+            }
+
+            .form-header p {
+                font-size: 12.5px;
+                line-height: 1.4;
+                color: var(--text-muted);
+                margin-bottom: 20px;
+            }
+
+            /* INPUTS */
+            .input-group {
+                width: 100%;
+                margin-bottom: 14px;
+            }
+
+            .input-group label {
+                font-size: 11px;
+                margin-bottom: 5px;
+            }
+
+            .input-wrapper {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .input-field {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+                height: 46px;
+                padding: 10px 12px 10px 38px;
+                font-size: 14px;
+            }
+
+            /* BOTONES */
+            .btn-main {
+                width: 100%;
+                max-width: 100%;
+                min-height: 46px;
+                padding: 12px 16px;
+                font-size: 14px;
+                font-weight: 600;
+            }
+
+            .btn-demo-quick {
+                background: linear-gradient(135deg, var(--bg-pastel-rose), #FCE4E0);
+                border: 1.5px solid rgba(244, 172, 183, 0.8);
+                color: var(--brown-dark);
+                font-weight: 700;
+                box-shadow: 0 4px 15px rgba(244, 172, 183, 0.35);
+            }
+
+            /* SEPARADOR */
+            .separator {
+                width: 100%;
+                margin: 16px 0;
+                font-size: 10.5px;
+            }
+
+            /* REGISTRO */
+            .register-link-box {
+                width: 100%;
+                font-size: 12px;
+                margin-top: 14px;
+                text-align: center;
+            }
+        }
+
+
+        /* =========================================================
+           CELULARES MUY PEQUEÑOS
+           ========================================================= */
+
+        @media (max-width: 380px) {
+
+            #login-screen {
+                padding: 10px;
+            }
+
+            .login-card {
+                border-radius: 16px;
+            }
+
+            .login-mobile-brand .brand-badge {
+                font-size: 11px;
+                padding: 7px 14px;
+            }
+
+            .login-form-area {
+                padding: 22px 16px 20px;
+            }
+
+            .form-header h2 {
+                font-size: 22px;
+            }
         }
 
         /* ==========================================================================
@@ -987,6 +1249,22 @@
             background: var(--bg-pastel-vanilla);
             border-color: var(--brown-light);
             color: var(--brown-primary);
+        }
+
+        /* Botón de Salir / Peligro en Rojo Pastel */
+        .btn-action-danger {
+            background: linear-gradient(135deg, #E57373, #DE6B74) !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(222, 107, 116, 0.4) !important;
+            box-shadow: 0 4px 12px rgba(222, 107, 116, 0.22) !important;
+            font-weight: 600;
+        }
+
+        .btn-action-danger:hover {
+            background: linear-gradient(135deg, #D96262, #CF5A64) !important;
+            color: #FFFFFF !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(222, 107, 116, 0.32) !important;
         }
 
         .btn-sm-del {
@@ -1570,12 +1848,18 @@
 
         .mobile-brand-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
+            font-size: 17.5px;
             font-weight: 700;
             color: var(--text-title);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .mobile-brand-text {
+            white-space: nowrap;
+            letter-spacing: 0.5px;
         }
 
         .mobile-cart-badge-btn {
@@ -1672,9 +1956,55 @@
                 gap: 20px;
             }
 
-            .login-card {
-                grid-template-columns: 1fr;
-                max-width: 480px;
+            .mobile-role-chip-mini {
+                font-size: 10.5px;
+                font-weight: 700;
+                padding: 3px 8px;
+                border-radius: 12px;
+                background: var(--bg-pastel-rose);
+                color: var(--brown-dark);
+                border: 1px solid rgba(244, 172, 183, 0.8);
+                margin-left: 8px;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                cursor: pointer;
+            }
+
+            .mobile-role-selector-box {
+                margin: 12px 14px 4px;
+                background: var(--bg-pastel-vanilla);
+                border: 1px solid rgba(198, 139, 89, 0.35);
+                border-radius: var(--radius-md);
+                padding: 10px 14px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                transition: var(--transition);
+            }
+
+            .mobile-role-selector-box:hover {
+                background: #F5EAE0;
+            }
+
+            .mobile-role-badge {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                font-size: 12px;
+                font-weight: 700;
+                color: var(--brown-dark);
+            }
+
+            .mobile-role-badge .change-role-link {
+                font-size: 11px;
+                color: var(--brown-primary);
+                text-decoration: underline;
+                display: flex;
+                align-items: center;
+                gap: 4px;
             }
 
             .table-wrapper {
@@ -1691,6 +2021,10 @@
         }
 
         @media (max-width: 640px) {
+            .mobile-role-chip-mini {
+                display: none;
+            }
+
             .metrics-grid {
                 grid-template-columns: 1fr;
             }
@@ -1708,6 +2042,28 @@
 
             .form-row-2col {
                 grid-template-columns: 1fr !important;
+            }
+        }
+
+
+        /* ===== Layouts que no tenían estilos de escritorio ===== */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .pos-layout {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        @media (max-width: 992px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1810,6 +2166,11 @@
 
             <!-- Columna Derecha: Formulario de Login -->
             <div class="login-form-area">
+                <!-- En smartphone se muestra únicamente el nombre de la boutique -->
+                <div class="login-mobile-brand">
+                    <span class="brand-badge"><i class="fa-solid fa-gem"></i> GESTIONA TU BOUTIQUE</span>
+                </div>
+
                 <div class="form-header">
                     <h2>Bienvenida</h2>
                     <p>Inicia sesión en tu boutique o prueba la experiencia en vivo</p>
@@ -1839,10 +2200,10 @@
                     </button>
                 </form>
 
-                <div class="separator"><span>o experimenta el demo</span></div>
+                <div class="separator"><span>o con 1 solo clic</span></div>
 
                 <button type="button" class="btn-main btn-demo-quick" onclick="ejecutarAccesoConCarga('admin')">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i> <strong>Utilizar DEMO Interactivo</strong>
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> <strong>Acceder al DEMO en 1 Clic</strong>
                 </button>
 
                 <div class="register-link-box">
@@ -1866,13 +2227,18 @@
                 <span></span>
             </button>
             <div class="mobile-brand-title">
-                <i class="fa-solid fa-gem" style="color: var(--gold-accent);"></i> <span
-                    class="mobile-brand-text">GESTIONA TU BOUTIQUE</span>
+                <i class="fa-solid fa-gem" style="color: var(--gold-accent);"></i>
+                <span class="mobile-brand-text">GESTIONA TU BOUTIQUE</span>
+                <span class="mobile-role-chip-mini" id="mobile-topbar-role-badge" onclick="abrirModalCambiarRol()" title="Toca para cambiar entre Administradora, Supervisora y Asesora">
+                    <i class="fa-solid fa-crown"></i> Admin
+                </span>
             </div>
-            <button class="mobile-cart-badge-btn" onclick="cambiarVista('pos')">
-                <i class="fa-solid fa-cash-register"></i>
-                <span id="mobile-cart-badge">POS</span>
-            </button>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <button class="mobile-cart-badge-btn" onclick="cambiarVista('pos')">
+                    <i class="fa-solid fa-cash-register"></i>
+                    <span id="mobile-cart-badge">POS</span>
+                </button>
+            </div>
         </div>
         <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeMobileSidebar()"></div>
 
@@ -1883,6 +2249,14 @@
                 <div class="brand-titles">
                     <h1>GESTIONA TU BOUTIQUE</h1>
                     <span>Atelier & Retail</span>
+                </div>
+            </div>
+
+            <!-- SELECTOR DE ROL RÁPIDO PARA MÓVIL EN SIDEBAR -->
+            <div class="mobile-role-selector-box" onclick="abrirModalCambiarRol()">
+                <div class="mobile-role-badge">
+                    <span id="mobile-sidebar-role-indicator"><i class="fa-solid fa-crown"></i> Modo: Administradora</span>
+                    <span class="change-role-link">Cambiar <i class="fa-solid fa-chevron-right"></i></span>
                 </div>
             </div>
 
@@ -1939,6 +2313,10 @@
                 <button class="btn-switch-role" onclick="abrirModalCambiarRol()">
                     <i class="fa-solid fa-arrows-rotate"></i> Cambiar Rol DEMO
                 </button>
+                <button class="btn-action btn-action-danger" onclick="cerrarSesionDemo()"
+                    style="width: 100%; justify-content: center; margin-top: 8px; border-radius: var(--radius-md);" title="Cerrar Sesión / Volver al Login">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Salir
+                </button>
             </div>
         </aside>
 
@@ -1958,7 +2336,7 @@
                         <i class="fa-solid fa-star"></i> Plan Actual: <strong id="active-plan-name"
                             style="margin-left:4px;">Boutique Pro</strong>
                     </span>
-                    <button class="btn-action btn-action-soft" onclick="cerrarSesionDemo()"
+                    <button class="btn-action btn-action-danger" onclick="cerrarSesionDemo()"
                         title="Cerrar Sesión / Volver al Login">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i> Salir
                     </button>
@@ -2841,12 +3219,18 @@
         }
 
         // ==========================================================================
-        // CONTROL DE ACCESO / LOGIN MANUAL BLOQUEADO CON SUGERENCIA
+        // CONTROL DE ACCESO / LOGIN MANUAL & MODO DEMO
         // ==========================================================================
         function intentarIniciarSesionManual(e) {
             e.preventDefault();
-            // Bloquea el login directo y sugiere utilizar el modo DEMO
-            document.getElementById('modal-sugerencia-demo').classList.add('open');
+            const email = (document.getElementById('login-email').value || '').toLowerCase();
+            let rol = 'admin';
+            if (email.includes('supervisora') || email.includes('supervisor')) {
+                rol = 'supervisora';
+            } else if (email.includes('asesora') || email.includes('vendedora') || email.includes('cajera') || email.includes('pos')) {
+                rol = 'vendedora';
+            }
+            ejecutarAccesoConCarga(rol);
         }
 
         function abrirModalRegistro() {
@@ -2858,8 +3242,8 @@
             cerrarModales();
             mostrarToast('¡Solicitud recibida! Puedes explorar la boutique ahora mismo en Modo DEMO.', 'info');
             setTimeout(() => {
-                document.getElementById('modal-sugerencia-demo').classList.add('open');
-            }, 400);
+                ejecutarAccesoConCarga('admin');
+            }, 600);
         }
 
         function cerrarSesionDemo() {
@@ -2880,27 +3264,42 @@
                     nombre: 'Administradora',
                     desc: 'Acceso Total',
                     avatar: '<i class="fa-solid fa-crown" style="color:var(--caramel);"></i>',
-                    pill: '<i class="fa-solid fa-crown"></i> Modo: Administradora'
+                    pill: '<i class="fa-solid fa-crown"></i> Modo: Administradora',
+                    mini: '<i class="fa-solid fa-crown"></i> Admin',
+                    sidebar: '<i class="fa-solid fa-crown"></i> Modo: Administradora'
                 },
                 'supervisora': {
                     nombre: 'Supervisora de Tienda',
                     desc: 'Metas & Reportes',
                     avatar: '<i class="fa-solid fa-user-tie" style="color:var(--brown-secondary);"></i>',
-                    pill: '<i class="fa-solid fa-user-tie"></i> Modo: Supervisora'
+                    pill: '<i class="fa-solid fa-user-tie"></i> Modo: Supervisora',
+                    mini: '<i class="fa-solid fa-user-tie"></i> Supervisora',
+                    sidebar: '<i class="fa-solid fa-user-tie"></i> Modo: Supervisora'
                 },
                 'vendedora': {
                     nombre: 'Asesora de Moda',
                     desc: 'Caja & Ventas POS',
                     avatar: '<i class="fa-solid fa-bag-shopping" style="color:var(--rose-dark);"></i>',
-                    pill: '<i class="fa-solid fa-bag-shopping"></i> Modo: Asesora POS'
+                    pill: '<i class="fa-solid fa-bag-shopping"></i> Modo: Asesora POS',
+                    mini: '<i class="fa-solid fa-bag-shopping"></i> Asesora POS',
+                    sidebar: '<i class="fa-solid fa-bag-shopping"></i> Modo: Asesora POS'
                 }
             };
 
             const data = roleMeta[rol] || roleMeta['admin'];
             const topbarPill = document.getElementById('topbar-role-pill');
-            const mobilePill = document.getElementById('mobile-topbar-role-pill');
+            const mobilePill = document.getElementById('mobile-topbar-role-badge');
+            const mobileSidebarInd = document.getElementById('mobile-sidebar-role-indicator');
+            const currentRoleAvatar = document.getElementById('current-role-avatar');
+            const currentRoleName = document.getElementById('current-role-name');
+            const currentRoleDesc = document.getElementById('current-role-desc');
+
             if (topbarPill) topbarPill.innerHTML = data.pill;
-            if (mobilePill) mobilePill.innerHTML = data.pill;
+            if (mobilePill) mobilePill.innerHTML = data.mini;
+            if (mobileSidebarInd) mobileSidebarInd.innerHTML = data.sidebar;
+            if (currentRoleAvatar) currentRoleAvatar.innerHTML = data.avatar;
+            if (currentRoleName) currentRoleName.innerText = data.nombre;
+            if (currentRoleDesc) currentRoleDesc.innerText = data.desc;
 
             // Restricción visual de permisos según el rol
             const navDash = document.getElementById('nav-item-dashboard');
